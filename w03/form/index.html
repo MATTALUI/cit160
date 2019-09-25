@@ -4,11 +4,37 @@
     <meta charset="utf-8">
     <title>Form</title>
     <style>
-      #circle{
+      #face{
         background-color: yellow;
         width: 100px;
         height: 100px;
+      }
+      #mouth{
+        position: relative;
+        top: 30px;
+        left:25px;
+        background-color: red;
+        height: 50px;
+        width: 50px;
+        border-bottom-left-radius: 100%;
+        border-bottom-right-radius: 100%;
+      }
+      #left{
+        left: 20px;
+      }
+      #right{
+        left: 60px;
+      }
+      .circle{
         border-radius: 100%;
+      }
+      .eye{
+        display: inline-block;
+        background-color: black;
+        width: 10px;
+        height: 10px;
+        position: relative;
+        top: 20px;
       }
     </style>
   </head>
@@ -19,6 +45,10 @@
     <textarea id="aboutyou" name="name" rows="8" cols="80" placeholder="Tell us a little about yourself."></textarea><br/>
     <textarea id="reference" name="name" rows="8" cols="80" placeholder="How did you hear about Matt's Gator N' Croc School?"></textarea><br/>
     <button type="button">Submit</button>
-    <div id="circle"></div>
+    <div id="face" class="circle">
+      <div id="left" class="eye circle"></div>
+      <div id="right" class="eye circle"></div>
+      <div id="mouth"></div>
+    </div>
   </body>
 </html>
