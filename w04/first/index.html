@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8"/>
+    <title>A Program to Say Hello</title>
+    <script>
+      function getRandomAdjective(){
+        let adjs = ['fresh', 'nice', 'spooky', 'happy', 'wonderful', 'beautiful', 'suspicious', 'hungry', 'sassy', 'sleepy', 'joyful', 'faithful', 'hearty', 'loving'];
+        let randomIndex = Math.floor( Math.random()* adjs.length );
+        return adjs[randomIndex];
+      }
+
+      function greetUser() {
+        let name = prompt("What is you name?");
+        let greeting = "Hello, " + name + "! Are you feeling "+ getRandomAdjective() + " today?";
+        alert(greeting);
+      }
+    </script>
+  </head>
+
+  <body>
+    <button type="button" onclick="greetUser()">Hello</button>
+  </body>
+</html>

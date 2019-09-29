@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Applied Scripture</title>
+    <script>
+      function applyScripture() {
+        let name = document.getElementById('nameInputBox').value;
+        let scripture = "Yea, verily, verily I say unto you, if all men had been, and were, and ever would be, like unto " + name + ", behold, the very powers of hell would have been shaken forever; yea, the devil would never have power over the hearts of the children of men.";
+        document.getElementById('outputDiv').innerHTML = scripture;
+      }
+    </script>
+  </head>
+
+  <body>
+    <p>
+      Please enter your name:
+      <input type="text" id="nameInputBox">
+    </p>
+    <button type="button" onclick="applyScripture()">Verse</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>
