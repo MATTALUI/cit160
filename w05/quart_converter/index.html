@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Quart Converter</title>
+  </head>
+  <body>
+    <h1>Quart Converter!</h1>
+    <span>Enter the number of quarts: </span><input type="text" id="quartInput" value ="0"/><br/>
+    <button onclick="convertQuarts()">Calculate!</button>
+    <div id="outputDiv"></div>
+    <script>
+      function convertQuarts(){
+        // Grab elements for ease of use
+        const quartsInput = document.getElementById("quartInput");
+        const outputDiv = document.getElementById("outputDiv");
+        // Calculate difference
+        const quarts = +quartInput.value; // Adding the + to the front in a trick to convert to number
+        const divisor = 1.0567;
+        const liters = (quarts/divisor).toFixed(2); // Round to two decimals
+        // Output to document
+        outputDiv.innerHTML = liters;
+      }
+    </script>
+  </body>
+</html>

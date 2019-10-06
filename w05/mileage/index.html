@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Mileage Calculator</title>
+  </head>
+  <body>
+    <h1>Mileage Calculator!</h1>
+    <span>Starting Miles: </span><input type="number" id="startingMiles" value="0"/><br/>
+    <span>Ending Miles: </span><input type="number" id="endingMiles" value="0"/><br/>
+    <span>Gas Used: </span><input type="number" id="gasUsed" value="0"/><br/>
+    <button onclick="calculateMileage()">Calculate Mileage</button>
+    <div id="outputDiv"></div>
+    <script>
+    function calculateMileage(){
+      // Get values of inputs
+      const startingMiles = +document.getElementById("startingMiles").value;
+      const endingMiles = +document.getElementById("endingMiles").value;
+      const gasUsed = +document.getElementById("gasUsed").value;
+      // Do calculations
+      const milesDriven = endingMiles - startingMiles;
+      const milesPerGallon = gasUsed ? +(milesDriven/gasUsed).toFixed(1) : 0;
+      // Output to document
+      document.getElementById("outputDiv").innerHTML =  milesPerGallon;
+    }
+    </script>
+  </body>
+</html>
