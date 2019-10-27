@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Sleepin</title>
+    <script>
+      function sleepy(){
+        const now = new Date();
+        const month = now.getMonth();
+        const dayOfMonth = now.getDate();
+        const dayOfWeek = now.getDay();
+        const newYears = dayOfMonth === 1 && month === 0;
+        const fourth = dayOfMonth === 4 && month === 6;
+        const christmas =  dayOfMonth === 25 && month === 11;
+        const holiday = newYears || fourth || christmas;
+        const weekend = dayOfWeek === 0 || dayOfWeek === 6;
+        const sleepIn = holiday || weekend;
+        document.querySelector("#outputDiv").innerHTML = sleepIn ? "Sleep in." : "Get up!";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Sleep-in Determiner</h1>
+    <button type="button" onclick="sleepy()">Click Here</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

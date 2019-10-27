@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Quick Maths!</title>
+    <script>
+      function quickMath(){
+        let message;
+        let value;
+        const first = +document.querySelector("#first").value;
+        const operation = document.querySelector("#operation").value;
+        const second = +document.querySelector("#second").value;
+        const solution = +document.querySelector("#solution").value;
+        switch(operation){
+          case '+':
+            value = first + second;
+            break;
+          case '-':
+            value = first - second;
+            break;
+          case '*':
+            value = first * second;
+            break;
+          case '/':
+            value = first / second;
+            break;
+        }
+        if(value === solution){
+          message = "Correct! Good job!";
+        }else{
+          message = "Incorrect! Try again!";
+        }
+        document.querySelector("#outputDiv").innerHTML = message;
+      }
+
+      function slickMath(){
+        // This function will not get run unless you replace it in the onlcick attribute on the button.
+        // It just shows how an object can make this solution much less verbose
+        const first = +document.querySelector("#first").value;
+        const operation = document.querySelector("#operation").value;
+        const second = +document.querySelector("#second").value;
+        const solution = +document.querySelector("#solution").value;
+        const func = {
+          '+': (a,b)=>(a+b),
+          '-': (a,b)=>(a-b),
+          '*': (a,b)=>(a*b),
+          '/': (a,b)=>(a/b)
+        }[operation] || new Function;
+        document.querySelector("#outputDiv").innerHTML = func(first, second) === solution ? "Correct! Good job!" : "Incorrect! Try again!";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Quick Math!</h1>
+    <input type="text" id="first"/>
+    <input type="text" id="operation"/>
+    <input type="text" id="second"/>
+    =
+    <input type="text" id="solution"/>
+    <button type="button" onclick="quickMath()">Quick Math!</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

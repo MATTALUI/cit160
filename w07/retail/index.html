@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Retail Discounts</title>
+    <script>
+      function calcTotal(){
+        let total = +document.querySelector("#inputBox").value;
+        const dayOfWeek = new Date().getDay();
+        // Discounts are available TUE and WED for purchases over $50
+        const discountEligible = total > 50 && [2, 3].includes(dayOfWeek);
+        if(discountEligible) total *= 0.9;
+        total *= 1.06;
+        document.querySelector("#outputDiv").innerHTML = total.toFixed(2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Retail Discounts</h1>
+    <span>SUBTOTAL:</span><input type="text" id="inputBox"/>
+    <button type="button" onclick="calcTotal()">Click Here</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

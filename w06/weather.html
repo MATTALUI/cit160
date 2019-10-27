@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script>
+      function chooseShoes(){
+        const weather = document.querySelector('#inputBox').value;
+        let shoe = "shoes";
+        switch (weather){
+          case "hot":
+            shoe = "sandals"
+            break;
+          case "rain":
+            shoe = "galoshes"
+            break;
+          case "snow":
+            shoe = "boots"
+        }
+        document.querySelector("#outputDiv").innerHTML = shoe;
+      }
+
+      function easyShoe(){
+        // This Function won't get called unless you change the onclick for the button.
+        // I just wanted to include this because it's becoming a more and more used
+        // alternative to simple switch cases that just take a string and return a string.
+        // It's much typing!
+        const weather = document.querySelector('#inputBox').value;
+        document.querySelector("#outputDiv").innerHTML = {
+          hot: "sandals",
+          rain: "galoshes",
+          snow: "boots"
+        }[weather] || "shoes";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Let's CHOOSE some SHOES.</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>WEATHER</th>
+          <th>SHOES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>hot</td>
+          <td>sandals</td>
+        </tr>
+        <tr>
+          <td>rain</td>
+          <td>galoshes</td>
+        </tr>
+        <tr>
+          <td>snow</td>
+          <td>boots</td>
+        </tr>
+        <tr>
+          <td>other</td>
+          <td>shoes</td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="text" id="inputBox"/>
+    <button type="button" onclick="chooseShoes()">Click Here</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

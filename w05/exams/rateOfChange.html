@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Rate of Change</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<script>
+function computeRateOfChange(){
+  let prevPrice = +document.querySelector("#prevPrice").value;
+  let currPrice = +document.querySelector("#currPrice").value;
+  let difference = currPrice - prevPrice
+  let rateOfChange = difference/prevPrice;
+  document.querySelector("#rate").innerHTML = rateOfChange.toFixed(4);
+}
+
+</script>
+</head>
+
+<body>
+    <h1>Rate of Change</h1>
+    <table>
+      <tbody>
+      <tr>
+        <td>Rate of Change</td>
+        <td>(Current Price - Previous Price)/Previous Price</td>
+      </tr>
+    </tbody>
+    </table>
+    Previous Price <input type="text" id="prevPrice"><br>
+    Current Price <input type="text" id="currPrice"><br>
+    <button type="button" onclick="computeRateOfChange()">Rate of Change</button><br>
+    Rate of Change <div id="rate"></div>
+</body>
+</html>

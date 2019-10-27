@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Volume of a Torus</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<script>
+  function computeVolume(){
+    let inner = +document.querySelector("#inner").value; // a
+    let outer = +document.querySelector("#outer").value; // b
+    let exponent = 2;
+    let piSquare = Math.pow(Math.PI, exponent);
+    let summation = inner + outer;
+    let difference = inner - outer;
+    let squareDifferential = Math.pow(difference, exponent);
+    let denominator = 4;
+    let volume = (piSquare * summation * squareDifferential)/denominator;
+    document.querySelector("#volume").innerHTML = volume.toFixed(2);
+  }
+
+</script>
+</head>
+
+<body>
+    <h1>Volume of a Torus</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            Volume
+          </td>
+          <td>
+            (n^2*(a+b)*((a-b)^2))/4
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    Inner radius <input type="text" id="inner"><br>
+    Outer radius <input type="text" id="outer"><br>
+    <button type="button" onclick="computeVolume()">Volume</button><br>
+    Volume <div id="volume"></div>
+</body>
+</html>
