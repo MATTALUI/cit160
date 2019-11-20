@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Binary Power!</title>
+    <script>
+      function makeTable(){
+        for (let i = 0; i <= 31; i++){
+          document.querySelector("#outputDiv").innerHTML += `<p>${Math.pow(2, i)}</p>`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Binary Power!</h1>
+    <button type="button" onclick="makeTable()">Click Here</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

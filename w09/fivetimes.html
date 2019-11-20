@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Five Times</title>
+    <script>
+      function makeTable(){
+        for (let i = 1; i <= 12; i++){
+          document.querySelector("#outputDiv").innerHTML += `<p>5 x ${i} = ${5 * i}</p>`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Five Times</h1>
+    <button type="button" onclick="makeTable()">Click Here</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

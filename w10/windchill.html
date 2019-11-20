@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>WIND CHILL</title>
+    <script>
+      function doInputOutput(){
+        const temperature = +document.querySelector("#temp").value;
+        const windSpeed = +document.querySelector("#speed").value;
+        const chill = windChill(temperature, windSpeed);
+        document.querySelector("#outputDiv").innerHTML = chill.toFixed(1);
+      }
+
+      function windChill(temp, speed){
+        const factoredSpeed = Math.pow(speed, 0.16);
+        return 35.74 + (0.6215 * temp) - (35.75 * factoredSpeed) + (0.4275 * temp * factoredSpeed);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Wind chill calculator</h1>
+    <span>Temperature:</span><input type="text" id="temp"/><br/>
+    <span>Wind Speed:</span><input type="text" id="speed"/><br/>
+    <button type="button" onclick="doInputOutput()">Wind Chill</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

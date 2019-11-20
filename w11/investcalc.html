@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script>
+      function doFV(){
+        const principal = +document.querySelector("#principal").value;
+        const rate = +document.querySelector("#rate").value;
+        const years = +document.querySelector("#years").value;
+        const ppy = +document.querySelector("#ppy").value;
+        const fv = computeFutureValue(principal, rate, years, ppy);
+        document.querySelector("#outputDiv").innerHTML = "$" + fv.toFixed(2);
+      }
+
+      function computeFutureValue(principal, annualRate, years, periodsPerYear){
+        const ratePerPeriod = annualRate / periodsPerYear;
+        const growthRate = 1 + ratePerPeriod;
+        const totalPeriods = years * periodsPerYear;
+        const periodicalGrowthRate = Math.pow(growthRate, totalPeriods);
+        return principal * periodicalGrowthRate;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Investment Calculator</h1>
+    <span>Amount Invested (principal)</span><input id="principal" type="text"/><br/>
+    <span>Annual Rate</span><input id="rate" type="text"/><br/>
+    <span>Number of years</span><input id="years" type="text"/><br/>
+    <span>Periods per year</span><input id="ppy" type="text"/><br/>
+    <button type="button" onclick="doFV()">Compute Future Values</button>
+    <div id="outputDiv"></div>
+  </body>
+</html>

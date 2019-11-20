@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script>
+      function doPayment(){
+        const principal = +document.querySelector("#principal").value;
+        const rate = +document.querySelector("#rate").value;
+        const years = +document.querySelector("#years").value;
+        const ppy = +document.querySelector("#ppy").value;
+        const payment = computePayment(principal, rate, years, ppy);
+        document.querySelector("#paymentOutput").innerHTML = "$" + payment.toFixed(2);
+      }
+
+      function doBalance(){
+        const principal = +document.querySelector("#principal").value;
+        const rate = +document.querySelector("#rate").value;
+        const years = +document.querySelector("#years").value;
+        const ppy = +document.querySelector("#ppy").value;
+        const ptd = +document.querySelector("#ptd").value;
+        const balance = computeBalance(principal, rate, years, ppy, ptd);
+        document.querySelector("#balanceOutput").innerHTML = "$" + balance.toFixed(2);
+      }
+
+      // console.log(computePayment(80000, 0.05, 30, 12))
+      // console.log(429.46)
+      function computePayment(principal, annualRate, years, periodsPerYear){
+        const ratePerPeriod = annualRate / periodsPerYear;
+        const numerator = principal * ratePerPeriod;
+
+        const growthRate = 1 + ratePerPeriod;
+        const totalPeriods = years * periodsPerYear;
+        const denominator = 1 - Math.pow(growthRate, -totalPeriods);
+        return numerator / denominator;
+      }
+
+      // console.log(computeBalance(80000, 0.05, 30, 12, 180));
+      // console.log(54306.40);
+      function computeBalance(principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate){
+        const paymentPerPeriod = +computePayment(principal, annualRate, years, periodsPerYear).toFixed(2);
+
+        const ratePerPeriod = annualRate / periodsPerYear;
+        const growthRatePerPeriod = 1 + ratePerPeriod;
+        const compoundGrowth = Math.pow(growthRatePerPeriod, numberOfPaymentPaidToDate);
+
+        const totalPayment = principal * compoundGrowth;
+        const numerator = paymentPerPeriod * (compoundGrowth - 1);
+        return totalPayment - numerator / ratePerPeriod;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Loan Calculator</h1>
+    <span>Amount borrowed (principal)</span><input id="principal" type="text"/><br/>
+    <span>Annual Interest Rate</span><input id="rate" type="text"/><br/>
+    <span>Number of years</span><input id="years" type="text"/><br/>
+    <span>Payments per year</span><input id="ppy" type="text"/><br/>
+    <button type="button" onclick="doPayment()">Compute Future Values</button>
+    <div id="paymentOutput"></div><br/>
+    <span>Payments to date</span><input id="ptd" type="text"/><br/>
+    <button type="button" onclick="doBalance()">Compute Future Values</button>
+    <div id="balanceOutput"></div>
+  </body>
+</html>
